@@ -1,0 +1,27 @@
+body {
+  background-color: lightblue;
+  font-family:sans-serif;
+  color: white;
+}
+
+.send_button {
+  background-color: orange;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.number_input {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.text_input {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.outer_container {
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}

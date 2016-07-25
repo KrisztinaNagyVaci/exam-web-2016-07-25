@@ -8,8 +8,8 @@ var sendButton = document.querySelector('.send_button');
 sendButton.addEventListener('click', addElement);
 
 function addElement(){
-  if (numberInput.value === '' || textInput.value === ''){
-    alert('Please fill in both input fields')
+  if (numberInput.value === '' || textInput.value === '' || (!/^[a-z A-Z]+$/.test(textInput.value))) {
+    alert('Please fill in both input fields and only use letters!')
   };
   var inputData = JSON.stringify({
     'shift' : numberInput.value,

@@ -1,24 +1,30 @@
 function decryptItem(str, number) {
   var newString = [];
+  var minUppercaseCode = 65;
+  var maxUppercaseCode = 90;
+  var minLowercaseCode = 97;
+  var maxLowercaseCode = 122;
+  var numberOfLetters = 26;
+  var spaceCode = 32;
 
   for (var i = 0; i < str.length; i++) {
-    if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
-      if (str.charCodeAt(i) - number <= 90 && str.charCodeAt(i) - number >= 65){
+    if (str.charCodeAt(i) >= minUppercaseCode && str.charCodeAt(i) <= maxUppercaseCode) {
+      if (str.charCodeAt(i) - number <= maxUppercaseCode && str.charCodeAt(i) - number >= minUppercaseCode){
         newString.push(String.fromCharCode(str.charCodeAt(i) - number));
-      } else if (str.charCodeAt(i) - number >= 90) {
-        newString.push(String.fromCharCode(str.charCodeAt(i) - 26 - number));
-      } else if (str.charCodeAt(i) - number <= 65){
-        newString.push(String.fromCharCode(str.charCodeAt(i) + 26 - number));
+      } else if (str.charCodeAt(i) - number >= maxUppercaseCode) {
+        newString.push(String.fromCharCode(str.charCodeAt(i) - numberOfLetters - number));
+      } else if (str.charCodeAt(i) - number <= minUppercaseCode){
+        newString.push(String.fromCharCode(str.charCodeAt(i) + numberOfLetters - number));
       }
-    } else if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122){
-      if (str.charCodeAt(i) - number <= 122 && str.charCodeAt(i) - number >= 97){
+    } else if (str.charCodeAt(i) >= minLowercaseCode && str.charCodeAt(i) <= maxLowercaseCode){
+      if (str.charCodeAt(i) - number <= maxLowercaseCode && str.charCodeAt(i) - number >= minLowercaseCode){
         newString.push(String.fromCharCode(str.charCodeAt(i) - number));
-      } else if (str.charCodeAt(i) - number >= 122) {
-        newString.push(String.fromCharCode(str.charCodeAt(i) - 26 - number));
-      } else if (str.charCodeAt(i) - number <= 97){
-        newString.push(String.fromCharCode(str.charCodeAt(i) + 26 - number));
+      } else if (str.charCodeAt(i) - number >= maxLowercaseCode) {
+        newString.push(String.fromCharCode(str.charCodeAt(i) - numberOfLetters - number));
+      } else if (str.charCodeAt(i) - number <= minLowercaseCode){
+        newString.push(String.fromCharCode(str.charCodeAt(i) + numberOfLetters - number));
       }
-    } else if (str.charCodeAt(i) === 32){
+    } else if (str.charCodeAt(i) === spaceCode){
       newString.push(String.fromCharCode(str.charCodeAt(i)));
     } else {
       return "You have entered an invalid character."

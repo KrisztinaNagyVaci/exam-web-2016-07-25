@@ -16,8 +16,18 @@ tape('decryptItem returns a string with invalid character input', function(t){
   t.end();
 });
 
-tape('decryptItem returns the decrypted item with valid input', function(t){
+tape('decryptItem returns the decrypted item with valid lowercase input', function(t){
   t.deepEqual(caesar.decryptItem('c', 2), 'a');
+  t.end();
+});
+
+tape('decryptItem returns the decrypted item with valid uppercase input', function(t){
+  t.deepEqual(caesar.decryptItem('C', 2), 'A');
+  t.end();
+});
+
+tape('decryptItem returns the decrypted item with valid lowercase input and a negative number', function(t){
+  t.deepEqual(caesar.decryptItem('a', -2), 'c');
   t.end();
 });
 

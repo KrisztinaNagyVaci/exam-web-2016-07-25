@@ -1,4 +1,4 @@
-function cc3(str, number) {
+function decryptItem(str, number) {
   var newString = [];
 
   for (var i = 0; i < str.length; i++) {
@@ -18,11 +18,15 @@ function cc3(str, number) {
       } else if (str.charCodeAt(i) - number <= 97){
         newString.push(String.fromCharCode(str.charCodeAt(i) + 26 - number));
       }
+    } else if (str.charCodeAt(i) === 32){
+      newString.push(String.fromCharCode(str.charCodeAt(i)));
+    } else {
+      return "You have entered an invalid character." 
     }
   }
   return newString.join("");
 }
 
 module.exports = {
-  cc3: cc3
+  decryptItem: decryptItem
 };

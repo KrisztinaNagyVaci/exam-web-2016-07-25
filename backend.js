@@ -10,12 +10,19 @@ app.use(express.static('./client'))
 
 
 app.post('/decode', function(req, res){
-  var item = {
-        status: 'ok',
-        text: ceasar.cc3(req.body.text, Number(req.body.shift))
+  if (ceasar.decryptItem(req.body.text, Number(req.body.shift)) === "You have entered an invalid character."){
+    var errorResponse = {
+      status: 'error',
+      text: ceasar.decryptItem(req.body.text, Number(req.body.shift))
     };
-    console.log(-req.body.shift);
-    res.send(item);
+    res.send(errorResponse);
+  } else {
+    var validResponse = {
+          status: 'ok',
+          text: ceasar.decryptItem(req.body.text, Number(req.body.shift))
+      };
+      res.send(validResponse);
+  }
 });
 
 

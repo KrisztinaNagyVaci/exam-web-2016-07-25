@@ -8,6 +8,9 @@ var sendButton = document.querySelector('.send_button');
 sendButton.addEventListener('click', addElement);
 
 function addElement(){
+  if (numberInput.value === '' || textInput.value === ''){
+    alert('Please fill in both input fields')
+  };
   var inputData = JSON.stringify({
     'shift' : numberInput.value,
     'text' : textInput.value
@@ -17,12 +20,15 @@ function addElement(){
 
 function callAPI(callback, method, url, value, senddata){
     var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-      var response = JSON.parse(xhr.response);
-      callback(response);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status >= 200){
+          var response = JSON.parse(xhr.response);
+          callback(response);
+        }
     }
     xhr.open(method, url, value);
     xhr.setRequestHeader("content-type", "application/json; charset=utf-8");
+    console.log('Loading');
     xhr.send(senddata);
   };
 
